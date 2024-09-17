@@ -1,0 +1,524 @@
+/* Universal styles */
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+/* Font Faces */
+@font-face {
+    font-family: "Dongle-light";
+    src: url("Dongle/Dongle-Light.ttf");
+}
+@font-face {
+    font-family: "Dongle-regular";
+    src: url("Dongle/Dongle-Regular.ttf");
+}
+@font-face {
+    font-family: "Dongle-bold";
+    src: url("Dongle/Dongle-Bold.ttf");
+}
+
+/* Search Bar */
+.search-bar {
+    position: relative;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 30px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    padding: 10px;
+    max-width: 600px;
+    width: 100%;
+    overflow: hidden;
+    transition: background 0.4s ease;
+}
+
+.search-bar::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 187, 0, 0.4);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.6s ease, background 0.6s ease;
+    z-index: 0;
+}
+
+.search-bar:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.search-bar input {
+    border: none; /* Ensures no border around the input */
+    padding: 10px 20px;
+    font-size: 1.4rem;
+    border-radius: 30px 0 0 30px; /* Rounded corners only on the left */
+    outline: none; /* Removes the default outline */
+    flex: 1;
+    background: transparent; /* Transparent background */
+    z-index: 1; /* Ensures input is above the background effect */
+}
+
+.search-bar button {
+    background-color: #ff7f50;
+    color: white;
+    border: none; /* Ensures no border around the button */
+    padding: 10px 20px;
+    border-radius: 0 30px 30px 0; /* Rounded corners only on the right */
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 1; /* Ensures button is above the background effect */
+}
+
+.search-bar button:hover {
+    background-color: #333;
+}
+
+/* Suggestions */
+.suggestions {
+    position: absolute;
+    top: 100%; /* Position directly below the search input */
+    left: 0;
+    width: 100%;
+    max-height: 300px; /* Adjust as needed */
+    overflow-y: auto; /* Scroll if suggestions exceed max-height */
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10; /* Ensure it appears above other elements */
+    display: none; /* Initially hidden */
+    transition: opacity 0.3s ease;
+}
+.suggestion-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1.4rem;
+    border-bottom: 1px solid #ddd; /* Divider between items */
+    transition: background-color 0.3s ease;
+}
+.suggestion-item:hover {
+    background-color: #f0f0f0;
+}
+.suggestion-item.selected {
+    background-color: #e0e0e0;
+}
+.suggestions.empty {
+    display: none;
+}
+
+/* Header */
+header {
+    display: flex;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0, 0.1);
+    align-items: center;
+}
+.logo img {
+    max-width: 15%;
+}
+.nav-menu ul {
+    display: flex;
+}
+.nav-menu li {
+    list-style: none;
+    margin-right: 20px;
+}
+.nav-menu li:last-child {
+    margin-right: 0;
+}
+.nav-menu a {
+    text-decoration: none;
+    font-family: "Dongle-bold";
+    font-size: 1.6rem;
+    color: #333;
+    transition: all ease 0.3s;
+}
+.nav-menu a:hover {
+    color: #ff7f50;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+}
+.hero-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+}
+.hero-content h1 {
+    font-family: "Dongle-bold";
+    font-size: 4rem;
+}
+.hero-content p {
+    font-family: "Dongle-regular";
+    font-size: 1.8rem;
+    margin-top: -20px;
+    margin-bottom: 10px;
+}
+.hero-button {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background-color: #ff7f50;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-family: "Dongle-light";
+    font-size: 1.6rem;
+    transition: all ease 0.3s;
+}
+.hero-button:hover {
+    background-color: #333;
+}
+
+/* Destinations */
+.destinations {
+    font-size: 2.4rem;
+    font-family: "Dongle-bold";
+    margin: 40px 80px;
+    text-align: center;
+}
+.destinations h2 {
+    margin-bottom: 40px;
+}
+.destination-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 40px;
+}
+.destination-item img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+.destination-item {
+    text-align: left;
+}
+.destination-item h3 {
+    font-size: 2rem;
+}
+.destination-item p {
+    font-size: 1.4rem;
+    line-height: 1;
+    font-family: "Dongle-regular";
+}
+
+/* Feedback */
+.feedback {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+.feedback.crowded {
+    color: #dc3545; /* Red color for crowded */
+}
+.feedback.available {
+    color: #28a745; /* Green color for available */
+}
+
+/* Responsive Design */
+/* Adjusting padding and margin for responsive design */
+@media (max-width: 1177px) {
+    .feedback {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .feedback {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 603px) {
+    .feedback {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 430px) {
+    .feedback {
+        font-size: 0.8rem;
+    }
+}
+
+.about{
+    text-align: center;
+    padding: 100px;
+}
+.about h3{
+   font-family: "Dongle-bold";
+   font-size: 3rem;
+}
+.about p{
+    font-family: "Dongle-regular";
+    font-size: 1.4rem;
+    line-height: 1;
+    margin-bottom: 40px;
+}
+.team-members{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.team-member img{
+    width: 300px;
+    height: 300px;
+    margin: 20px;
+    object-fit: cover;
+}
+.team-member h4{
+    font-family: "Dongle-bold";
+    font-size: 2rem;
+}
+.contact{
+    padding: 80px;
+    text-align: center;
+    background-color: #F7F7F7;
+}
+.contact h3{
+    font-family: "Dongle-bold";
+    font-size: 3rem;
+}
+.contact-info p{
+    font-family: "Dongle-regular";
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+}
+.contact-info ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+} 
+.contact-info li{
+    margin: 0 20px;
+    font-family: "Dongle-regular";
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+  
+}
+.contact-info li a{
+    text-decoration: none;
+    font-family: "Dongle-regular";
+    color: black;
+}
+.contact-info i{
+    font-size: 24px;
+    margin-right: 10px;
+}
+.form{
+    width: 100%;
+}
+input,textarea{
+    width: 70%;
+    padding: 10px;
+    margin: 20px 0;
+    border: none;
+    box-shadow: 0 0 5px rgba(0,0,0, 0.1);
+    border-radius: 5px;
+    font-size: 1.4rem;
+    font-family: "Dongle-regular";
+}
+textarea{
+    height: 200px;
+}
+.form button{
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background-color: #ff7f50;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-family: "Dongle-light";
+    font-size: 1.6rem;
+    border: none;
+    transition: all ease 0.3s;
+}
+.form button:hover{
+    background-color: #333;
+}
+
+footer{
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+}
+.social-icons a{
+    color: #fff;
+    font-size: 24px;
+    margin-right: 20px;
+}
+footer p{
+    font-family: "Dongle-regular";
+    font-size: 1.4rem;
+}
+@media (max-width: 1177px) {
+    .hero-content h1{
+        line-height: 0.7;
+    }
+    .hero-content p{
+        margin-top: 0;
+        line-height: 0.8;
+    }
+    .destinations img{
+        height: 250px;
+    }
+    input, textarea{
+        width: 100%;
+    }
+}
+@media (max-width: 768px) {
+    .hero-content h1{
+        margin-bottom: 5px;
+    }
+    .team-member img{
+        width: 200px;
+        height: 200px;
+    }
+    .destination-grid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 40px;
+    }
+}
+@media (max-width:603px){
+    .hero-content h1{
+        font-size: 2rem;
+    }
+    .hero-content p{
+        font-size: 1.5rem;
+    }
+}
+@media (max-width:430px){
+    header{
+        display: none;
+    }
+    .hero-content h1{
+        font-size: 1.3rem;
+    }
+    .hero-content p{
+        font-size: 1rem;
+    }
+    .hero-button{
+        padding: 6px 22px;
+        font-size: 16px;
+    }
+    .destinations{
+        font-size: 1.5rem;
+    }
+    .destination-grid{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 40px;
+    }
+    .about{
+        padding: 0 30px;
+    }
+    .team-member img{
+        width: 250px;
+        height: 250px;
+    }
+}
+
+
+/* More Places Button */
+#more-places-button {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background-color: #ff7f50; /* Vibrant color */
+    padding: 10px 20px; /* Reduced padding for a smaller button */
+    border-radius: 30px; /* Smaller border-radius for a less rounded look */
+    font-family: "Dongle-bold";
+    font-size: 1.4rem; /* Smaller font size */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Smaller shadow */
+    transition: all 0.3s ease; /* Smooth transition for effects */
+    cursor: pointer; /* Pointer cursor to indicate it's clickable */
+}
+
+/* Hover effect */
+#more-places-button:hover {
+    background-color: #ff5722; /* Darker shade on hover */
+    transform: scale(1.05); /* Slightly larger on hover */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+}
+
+/* Active state effect */
+#more-places-button:active {
+    background-color: #e64a19; /* Even darker shade when pressed */
+    transform: scale(1); /* Return to normal size */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Normal shadow */
+}
+
+
+/* Additional Places Section */
+.more-places {
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+.available-places-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.available-place-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    width: calc(33% - 20px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+.available-place-item img {
+    width: 100%;
+    height: auto;
+}
+.available-place-item h4 {
+    font-size: 1.2rem;
+    margin: 10px;
+}
+.available-place-item p {
+    font-size: 1rem;
+    margin: 10px;
+}
+.available-place-item.low {
+    background-color: #e0f7fa;
+}
+.available-place-item.moderate {
+    background-color: #fff9c4;
+}
+.available-place-item.high {
+    background-color: #ffccbc;
+}
